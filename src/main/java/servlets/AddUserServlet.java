@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "AddUserServlet", urlPatterns = "/addUser")
+@WebServlet(name = "AddUserServlet", urlPatterns = "/admin/addUser")
 public class AddUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/jsp/addUser.jsp");
@@ -22,6 +22,6 @@ public class AddUserServlet extends HttpServlet {
                     request.getParameter("login"),
                     request.getParameter("pass"),
                     request.getParameter("name"));
-            response.sendRedirect(request.getContextPath().concat("/userList"));
+            response.sendRedirect(request.getContextPath().concat("/admin/userList"));
     }
 }

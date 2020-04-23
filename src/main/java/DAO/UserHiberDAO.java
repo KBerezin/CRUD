@@ -22,7 +22,7 @@ public class UserHiberDAO implements UserDAO {
         final Transaction transaction = session.getTransaction();
         transaction.begin();
         try {
-            session.persist(new User(login, password, name));
+            session.persist(new User(login, password, name, "user"));
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -39,7 +39,7 @@ public class UserHiberDAO implements UserDAO {
             user = session.createQuery(
                     "FROM User WHERE id = :id", User.class)
                     .setParameter("id", id)
-                    .getSingleResult();
+                    .uniqueResult();
         }
         return user;
     }
@@ -97,10 +97,10 @@ public class UserHiberDAO implements UserDAO {
 
     @Override
     public List<User> getAllUsers() {
-        List<User> allCars;
+        List<User> allUsers;
         try (Session session = sessionFactory.openSession()) {
-            allCars = session.createQuery("FROM User", User.class).getResultList();
+            allUsers = session.createQuery("FROM User", User.class).getResultList();
         }
-        return allCars;
+        return allUsers;
     }
 }

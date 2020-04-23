@@ -6,7 +6,7 @@
 </head>
 <body>
 <p>Are you sure you want to delete user ${requestScope.userForDelete.login}?</p>
-<form action="${pageContext.request.contextPath}/deleteUser" method="post">
+<form action="${pageContext.request.contextPath}/admin/deleteUser" method="post">
     <input type="hidden" name="idForDelete" value="${requestScope.userForDelete.id}">
     <input type="submit" value="Delete">
 </form>

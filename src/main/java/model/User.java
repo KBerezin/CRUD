@@ -3,7 +3,7 @@ package model;
 import javax.persistence.*;
 
 @Entity
-@Table (name = "usr")
+@Table(name = "usr")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,19 +11,21 @@ public class User {
     private String login;
     private String password;
     private String name;
+    private String role;
 
     public User() {
     }
 
-    public User(String login, String password, String name) {
-        this(null, login, password, name);
+    public User(String login, String password, String name, String role) {
+        this(null, login, password, name, role);
     }
 
-    public User(Long id, String login, String password, String name) {
+    public User(Long id, String login, String password, String name, String role) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.name = name;
+        this.role = role;
     }
 
     public Long getId() {
@@ -56,6 +58,14 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
 

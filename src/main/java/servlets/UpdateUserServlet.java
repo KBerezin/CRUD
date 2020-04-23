@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet(name = "UpdateUserServlet", urlPatterns = "/updateUser")
+@WebServlet(name = "UpdateUserServlet", urlPatterns = "/admin/updateUser")
 public class UpdateUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = UserServiceImpl.getUserService().getUserById(Long.parseLong(request.getParameter("id")));
@@ -28,8 +28,9 @@ public class UpdateUserServlet extends HttpServlet {
                         Long.parseLong(request.getParameter("id")),
                         request.getParameter("login"),
                         request.getParameter("pass"),
-                        request.getParameter("name")));
-        response.sendRedirect(request.getContextPath().concat("/userList"));
+                        request.getParameter("name"),
+                        "user"));
+        response.sendRedirect(request.getContextPath().concat("/admin/userList"));
     }
 }
 

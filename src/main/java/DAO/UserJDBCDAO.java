@@ -22,9 +22,9 @@ public class UserJDBCDAO implements UserDAO {
         connection.setAutoCommit(false);
         try {
             JDBCUtil.update(connection,
-                    "INSERT INTO usr (login, password, name)" +
-                            " VALUES (?, ?, ?);",
-                    login, password, name);
+                    "INSERT INTO usr (login, password, name, role)" +
+                            " VALUES (?, ?, ?, ?);",
+                    login, password, name, "user");
             connection.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -97,8 +97,9 @@ public class UserJDBCDAO implements UserDAO {
             user = new User(
                     resultSet.getLong(1),
                     resultSet.getString(2),
+                    resultSet.getString(3),
                     resultSet.getString(4),
-                    resultSet.getString(3));
+                    resultSet.getString(5));
         }
         return user;
     }

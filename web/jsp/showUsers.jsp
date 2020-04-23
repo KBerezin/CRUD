@@ -6,8 +6,9 @@
 </head>
 <body>
 <div align="center">
+    <a href="${pageContext.request.contextPath}/logout">Logout</a> <br>
     <h2>Userlist</h2>
-    <h3><a href="${pageContext.request.contextPath}/addUser">New User</a></h3>
+    <h3><a href="${pageContext.request.contextPath}/admin/addUser">New User</a></h3>
     <table border="1" cellpadding="5">
         <tr>
             <th>ID</th>
@@ -23,8 +24,8 @@
                 <td>${user.password}</td>
                 <td>${user.name}</td>
                 <td>
-                    <a href="${pageContext.request.contextPath}/updateUser?id=${user.id}">Edit</a>
-                    <a href="${pageContext.request.contextPath}/deleteUser?id=${user.id}">Delete</a>
+                    <a href="${pageContext.request.contextPath}/admin/updateUser?id=${user.id}">Edit</a>
+                    <a href="${pageContext.request.contextPath}/admin/deleteUser?id=${user.id}">Delete</a>
                 </td>
             </tr>
         </c:forEach>

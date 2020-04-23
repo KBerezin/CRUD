@@ -8,7 +8,7 @@
 <div>
     <p>Update user ${requestScope.userForUpdate.login} </p>
     <div>
-        <form action="${pageContext.request.contextPath}/updateUser" method="post">
+        <form action="${pageContext.request.contextPath}/admin/updateUser" method="post">
             <input type="hidden" name="id" value="${requestScope.userForUpdate.id}">
             <label> Login:
                 <input type="text" name="login" value="${requestScope.userForUpdate.login}">

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "DeleteUserServlet", urlPatterns = "/deleteUser")
+@WebServlet(name = "DeleteUserServlet", urlPatterns = "/admin/deleteUser")
 public class DeleteUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = UserServiceImpl.getUserService().getUserById(Long.parseLong(request.getParameter("id")));
@@ -22,6 +22,6 @@ public class DeleteUserServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserServiceImpl.getUserService().deleteUser(Long.parseLong(request.getParameter("idForDelete")));
-        response.sendRedirect(request.getContextPath() + "/userList");
+        response.sendRedirect(request.getContextPath() + "/admin/userList");
     }
 }
