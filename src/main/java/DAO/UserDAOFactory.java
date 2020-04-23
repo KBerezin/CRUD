@@ -3,7 +3,6 @@ package DAO;
 
 import util.DBHelper;
 
-import javax.naming.NamingException;
 import java.sql.SQLException;
 
 public class UserDAOFactory {
@@ -20,7 +19,9 @@ public class UserDAOFactory {
         return userDAOFactory;
     }
 
-    public UserDAO getUserDAO() throws SQLException, NamingException {
+    public UserDAO getUserDAO() throws SQLException {
         return new UserJDBCDAO(DBHelper.getInstance().getConnection());
+//        return new UserHiberDAO(DBHelper.getInstance().getSessionFactory());
     }
+
 }

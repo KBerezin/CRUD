@@ -17,5 +17,7 @@ public interface UserDAO {
 
     void deleteUser(long id) throws SQLException;
 
+    boolean isUserExists(String login) throws SQLException;
+
     List<User> getAllUsers() throws SQLException;
 }
