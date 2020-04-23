@@ -74,6 +74,11 @@ public class UserJDBCDAO implements UserDAO {
     }
 
     @Override
+    public boolean isUserExists(String login) throws SQLException {
+        return getUser(login) != null;
+    }
+
+    @Override
     public List<User> getAllUsers() throws SQLException {
         return JDBCUtil.select(connection, "SELECT * FROM usr",
                 resultSet -> {
@@ -92,8 +97,8 @@ public class UserJDBCDAO implements UserDAO {
             user = new User(
                     resultSet.getLong(1),
                     resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getString(4));
+                    resultSet.getString(4),
+                    resultSet.getString(3));
         }
         return user;
     }

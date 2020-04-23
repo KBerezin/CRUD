@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean addUser(String login, String password, String name) throws DBException {
         try {
-            if (userDAO.getUser(login) == null) {
+            if (!userDAO.isUserExists(login)) {
                 userDAO.addUser(login, password, name);
                 return true;
             }
